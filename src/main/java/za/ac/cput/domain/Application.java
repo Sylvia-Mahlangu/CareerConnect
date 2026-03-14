@@ -62,16 +62,12 @@ public class Application {
         if (this == o) return true;
         if (!(o instanceof Application)) return false;
         Application that = (Application) o;
-        return Objects.equals(applicationId, that.applicationId) &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(dateApplied, that.dateApplied) &&
-                Objects.equals(student, that.student) &&
-                Objects.equals(internship, that.internship);
+        return Objects.equals(applicationId, that.applicationId)
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(applicationId, status, dateApplied, student, internship);
+        return Objects.hash(applicationId);
     }
 
     public static class Builder {
@@ -104,6 +100,15 @@ public class Application {
 
         public Builder setInternship(Internship internship){
             this.internship = internship;
+            return this;
+        }
+
+        public Builder copy(Application application) {
+            this.applicationId = application.applicationId;
+            this.status = application.status;
+            this.dateApplied = application.dateApplied;
+            this.student = application.student;
+            this.internship=application.internship;
             return this;
         }
 
